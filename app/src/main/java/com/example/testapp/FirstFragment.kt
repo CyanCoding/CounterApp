@@ -44,11 +44,12 @@ class FirstFragment : Fragment() {
             countMe(false, view)
         }
 
-        // Binding for toast button
-        binding.toastButton.setOnClickListener {
-            val textView = view.findViewById<TextView>(R.id.textview_first)
-            val myToast = Toast.makeText(context, textView.text.toString(), Toast.LENGTH_SHORT)
-            myToast.show()
+        // Binding for random fragment button
+        binding.randomFragmentButton.setOnClickListener {
+            val count = view.findViewById<TextView>(R.id.textview_first).text.toString().toInt()
+            val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(count)
+            findNavController().navigate(action)
+
         }
     }
 
